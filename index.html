@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liga Deportiva de Albrook · Eclipse League</title>
+<meta name="description" content="Liga Deportiva de Albrook · Eclipse League, la liga nocturna de softbol de los lunes y martes en el Complejo Deportivo del MEF, Albrook. Grupos, calendario y posiciones.">
+<meta name="theme-color" content="#000818">
+<meta property="og:title" content="Liga Deportiva de Albrook · Eclipse League">
+<meta property="og:description" content="12 equipos · 2 grupos · 1 solo campeón. Lunes y martes en Albrook.">
+<meta property="og:image" content="img/lda-logo.png">
+<link rel="icon" type="image/png" href="img/lda-logo-96.png">
+<style>
+@font-face{font-family:"Bebas";src:url(fonts/bebas-neue-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Marker";src:url(fonts/permanent-marker-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Barlow";font-weight:500;src:url(fonts/barlow-condensed-latin-500-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Barlow";font-weight:600;src:url(fonts/barlow-condensed-latin-600-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Barlow";font-weight:800;src:url(fonts/barlow-condensed-latin-800-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Barlow";font-weight:800;font-style:italic;src:url(fonts/barlow-condensed-latin-800-italic.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Barlow";font-weight:900;font-style:italic;src:url(fonts/barlow-condensed-latin-900-italic.woff2) format("woff2");font-display:swap}
+
+:root{
+  --noche:#000818; --noche2:#061230; --panel:#0a1634; --linea:#1c2d5a;
+  --rojo:#e0101a; --rojo-hondo:#b80000; --azul:#1d5fd8; --azul-hondo:#003070;
+  --amarillo:#f8f000; --dorado:#d8a020; --celeste:#70c0d8; --texto:#eef2ff; --tenue:#9fb0d6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--noche);color:var(--texto);font-family:"Barlow",system-ui,sans-serif;font-weight:500;font-size:18px;line-height:1.45;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(0,8,24,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.nav img{width:38px;height:38px}
+.nav .marca{font-family:"Bebas";font-size:22px;letter-spacing:1px;line-height:1;white-space:nowrap}
+.nav .marca small{display:block;font-family:"Barlow";font-weight:600;font-size:11px;letter-spacing:3px;color:var(--tenue)}
+.nav ul{list-style:none;display:flex;gap:4px;margin-left:auto}
+.nav li a{text-decoration:none;font-weight:800;font-size:15px;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;border-radius:6px;color:var(--tenue)}
+.nav li a:hover{color:#fff;background:var(--panel)}
+@media(max-width:820px){.nav ul{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;text-align:center;padding:40px 0 56px;overflow:hidden;
+  background:
+   radial-gradient(60% 40% at 12% 0%,rgba(90,140,255,.45),transparent 70%),
+   radial-gradient(60% 40% at 88% 0%,rgba(90,140,255,.45),transparent 70%),
+   radial-gradient(40% 30% at 0% 55%,rgba(224,16,26,.35),transparent 70%),
+   radial-gradient(40% 30% at 100% 55%,rgba(29,95,216,.40),transparent 70%),
+   linear-gradient(180deg,#02102e 0%,var(--noche) 70%)}
+.hero:before,.hero:after{content:"";position:absolute;top:-10px;width:90px;height:90px;border-radius:50%;
+  background:radial-gradient(circle,#fff 0 12%,rgba(170,200,255,.8) 22%,transparent 62%);filter:blur(1px)}
+.hero:before{left:4%}.hero:after{right:4%}
+.logo-hero{width:min(250px,56vw);margin:0 auto;filter:drop-shadow(0 0 28px rgba(248,240,0,.35))}
+.frase{font-family:"Marker";color:#fff;font-size:clamp(20px,4vw,30px);line-height:1.05;transform:rotate(-6deg);text-shadow:0 2px 0 #000}
+.frase em{font-style:normal;color:var(--rojo);display:block}
+.hero .frases{display:flex;justify-content:space-between;align-items:center;gap:8px;max-width:980px;margin:-150px auto 40px;pointer-events:none}
+.hero .frases .der{transform:rotate(5deg)}
+@media(max-width:720px){.hero .frases{margin:14px auto 0;padding:0 8px}.hero .frases .frase{font-size:18px}}
+.titulo{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;line-height:.88;margin-top:14px;
+  font-size:clamp(58px,13vw,140px);letter-spacing:-1px;
+  background:linear-gradient(180deg,#ffffff 0%,#e8ecf6 38%,#8d97b0 52%,#f4f6fb 64%,#aab3c8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 0 #1b1f2c) drop-shadow(0 0 18px rgba(170,60,255,.55))}
+.subtitulo{display:inline-block;margin-top:10px;background:#050b1c;border:2px solid var(--rojo);border-radius:6px;padding:4px 16px;
+  font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:clamp(14px,2.6vw,20px)}
+.subtitulo b{color:var(--amarillo)}
+.lema{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;margin-top:16px;font-size:clamp(26px,6vw,52px);line-height:1}
+.lema .num{color:var(--amarillo)}
+.lema .corona{display:block;font-family:"Marker";font-style:normal;font-weight:400;color:var(--dorado);font-size:clamp(24px,5vw,40px);margin-top:6px}
+.capsulas{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.capsula{min-width:210px;padding:10px 20px;border-radius:12px;background:#07102a;text-align:center}
+.capsula.a{border:3px solid var(--rojo);box-shadow:0 0 18px rgba(224,16,26,.55)}
+.capsula.b{border:3px solid var(--azul);box-shadow:0 0 18px rgba(29,95,216,.6)}
+.capsula .dia{font-family:"Barlow";font-weight:900;font-style:italic;font-size:22px;text-transform:uppercase}
+.capsula .fecha{font-family:"Barlow";font-weight:900;font-style:italic;font-size:44px;line-height:1;color:var(--amarillo)}
+.capsula .mes{font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.cuenta{margin-top:24px;display:flex;justify-content:center;gap:10px}
+.cuenta div{background:var(--panel);border:1px solid var(--linea);border-radius:10px;min-width:74px;padding:8px 6px}
+.cuenta b{display:block;font-family:"Bebas";font-size:38px;line-height:1}
+.cuenta span{font-size:12px;letter-spacing:2px;color:var(--tenue);text-transform:uppercase}
+.cuenta-nota{margin-top:8px;color:var(--tenue);font-size:15px}
+
+/* ---------- secciones ---------- */
+section{padding:56px 0}
+.sec-titulo{text-align:center;margin-bottom:28px}
+.sec-titulo h2{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(34px,6vw,54px);line-height:1}
+.sec-titulo p{color:var(--tenue);margin-top:6px}
+.sec-titulo .raya{width:120px;height:4px;margin:12px auto 0;background:linear-gradient(90deg,var(--rojo),var(--amarillo),var(--azul));border-radius:4px}
+
+/* grupos */
+.grupos{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.grupos{grid-template-columns:1fr}}
+.grupo{border-radius:14px;padding:0 0 8px;background:linear-gradient(180deg,#0b1330,#060c20)}
+.grupo.a{border:3px solid var(--rojo);box-shadow:0 0 24px rgba(224,16,26,.45),inset 0 0 20px rgba(224,16,26,.15)}
+.grupo.b{border:3px solid var(--azul);box-shadow:0 0 24px rgba(29,95,216,.5),inset 0 0 20px rgba(29,95,216,.18)}
+.grupo h3{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;text-align:center;font-size:38px;line-height:1;padding:12px 0 10px;border-radius:10px 10px 0 0}
+.grupo.a h3{background:linear-gradient(180deg,#e0101a,#8a0006)}
+.grupo.b h3{background:linear-gradient(180deg,#2466e0,#0a2a70)}
+.grupo h3 small{display:block;font-size:16px;font-style:normal;font-weight:800;letter-spacing:3px;opacity:.9;margin-top:2px}
+.equipo{display:grid;grid-template-columns:44px 132px 1fr;align-items:center;gap:12px;padding:8px 14px;border-bottom:1px solid var(--linea)}
+.equipo:last-child{border-bottom:0}
+.equipo .n{font-family:"Barlow";font-weight:900;font-style:italic;font-size:26px;background:#fff;color:#0a0f1e;border-radius:6px;text-align:center;line-height:40px;transform:skewX(-8deg)}
+.equipo .escudo{height:72px;border-radius:8px;overflow:hidden;background:#050a18;display:flex;align-items:center;justify-content:center}
+.equipo .escudo img{height:100%;width:100%;object-fit:cover}
+.equipo .escudo.sin{font-family:"Barlow";font-weight:900;font-style:italic;font-size:30px;letter-spacing:1px;
+  background:linear-gradient(135deg,#f4c300 0 33%,#0033a0 33% 66%,#cf142b 66%);color:#fff;text-shadow:0 2px 3px #000}
+.equipo .nombre{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;font-size:24px;line-height:1}
+@media(max-width:420px){.equipo{grid-template-columns:36px 104px 1fr}.equipo .escudo{height:58px}.equipo .nombre{font-size:20px}}
+
+/* calendario */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px;scrollbar-width:thin}
+.tabs button{flex:0 0 auto;font-family:"Barlow";font-weight:800;font-size:17px;letter-spacing:1px;color:var(--tenue);background:var(--panel);border:1px solid var(--linea);border-radius:8px;padding:8px 14px;cursor:pointer}
+.tabs button[aria-selected="true"]{color:#0a0f1e;background:var(--amarillo);border-color:var(--amarillo)}
+.noches{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.noches{grid-template-columns:1fr}}
+.noche{background:var(--panel);border-radius:14px;overflow:hidden}
+.noche.a{border:2px solid var(--rojo)} .noche.b{border:2px solid var(--azul)}
+.noche header{padding:12px 16px;font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;font-size:26px;line-height:1.05}
+.noche.a header{background:linear-gradient(90deg,#b80000,#3a0508)} .noche.b header{background:linear-gradient(90deg,#1a4fb8,#081a45)}
+.noche header small{display:block;font-size:14px;font-style:normal;letter-spacing:2px;opacity:.85}
+.juego{padding:12px 16px;border-top:1px solid var(--linea)}
+.juego .hora{display:inline-block;font-family:"Barlow";font-weight:900;font-style:italic;font-size:17px;padding:2px 12px;border-radius:5px;margin-bottom:6px}
+.noche.a .hora{background:var(--rojo)} .noche.b .hora{background:var(--azul)}
+.cruce{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}
+.cruce .eq{display:flex;align-items:center;gap:8px;font-weight:800;text-transform:uppercase;font-size:18px;line-height:1.05}
+.cruce .eq:last-child{justify-content:flex-end;text-align:right}
+.cruce .eq img,.cruce .eq .mini{width:46px;height:30px;border-radius:5px;object-fit:cover;flex:0 0 auto}
+.cruce .eq .mini{display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;background:linear-gradient(135deg,#f4c300 0 33%,#0033a0 33% 66%,#cf142b 66%);color:#fff;text-shadow:0 1px 2px #000}
+.vs{font-family:"Barlow";font-weight:900;font-style:italic;font-size:24px;color:var(--amarillo);text-shadow:0 0 10px rgba(248,120,0,.8)}
+@media(max-width:420px){.cruce .eq{font-size:15px}.cruce .eq img,.cruce .eq .mini{width:36px;height:24px}}
+.post{padding:14px 16px;border-top:1px solid var(--linea)}
+.post b{color:var(--amarillo)}
+.aviso{margin-top:16px;text-align:center;color:var(--tenue);font-size:16px}
+.aviso strong{color:#fff}
+
+/* posiciones */
+.tabla{width:100%;border-collapse:collapse;font-size:17px}
+.tabla th{font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:13px;color:var(--tenue);padding:8px 6px;text-align:center;border-bottom:1px solid var(--linea)}
+.tabla th:nth-child(2){text-align:left}
+.tabla td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--linea)}
+.tabla td:nth-child(2){text-align:left;font-weight:800;text-transform:uppercase}
+.tabla td:first-child{font-family:"Barlow";font-weight:900;font-style:italic;width:32px}
+
+/* formato */
+.formato{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.formato{grid-template-columns:1fr}}
+.tarjeta{background:var(--panel);border:1px solid var(--linea);border-radius:14px;padding:20px}
+.tarjeta .big{font-family:"Barlow";font-weight:900;font-style:italic;font-size:54px;line-height:1;color:var(--amarillo)}
+.tarjeta h4{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;font-size:24px;line-height:1.05;margin:4px 0 8px}
+.tarjeta p{color:var(--tenue)}
+.ruta{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:r}
+@media(max-width:820px){.ruta{grid-template-columns:1fr 1fr;gap:10px}}
+.paso{position:relative;padding:14px;background:#07102a;border:1px solid var(--linea)}
+.paso:first-child{border-radius:12px 0 0 12px}.paso:last-child{border-radius:0 12px 12px 0;border-color:var(--dorado)}
+@media(max-width:820px){.paso,.paso:first-child,.paso:last-child{border-radius:12px}}
+.paso span{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--celeste);font-weight:800}
+.paso h5{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;font-size:22px;line-height:1;margin:4px 0}
+.paso p{font-size:15px;color:var(--tenue)}
+.paso:last-child h5{color:var(--dorado)}
+
+/* servicios */
+.servicios{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:900px){.servicios{grid-template-columns:repeat(2,1fr)}}
+.serv{text-align:center;background:var(--panel);border:1px solid var(--linea);border-radius:14px;padding:18px 10px}
+.serv .ico{width:64px;height:64px;margin:0 auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#050b1c;border:2px solid var(--linea)}
+.serv h4{font-family:"Barlow";font-weight:900;font-style:italic;text-transform:uppercase;font-size:20px;line-height:1.05}
+.serv p{font-size:14px;color:var(--tenue);margin-top:4px}
+
+/* sede y contacto */
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.dos{grid-template-columns:1fr}}
+.wa{display:flex;align-items:center;gap:12px;text-decoration:none;background:#0b3d23;border:2px solid #25d366;border-radius:12px;padding:12px 16px;margin-top:12px;font-weight:800;font-size:22px}
+.wa:hover{background:#0f5230}
+.wa svg{flex:0 0 auto}
+
+footer{overflow:hidden;padding:34px 0 46px;text-align:center;border-top:1px solid var(--linea);background:linear-gradient(180deg,var(--noche),#010410)}
+footer .frase{display:inline-block;transform:rotate(-3deg);color:var(--celeste);font-size:24px}
+footer p{color:var(--tenue);font-size:14px;letter-spacing:3px;text-transform:uppercase;margin-top:14px}
+.valores{font-weight:800;letter-spacing:4px;text-transform:uppercase;margin-top:10px}
+@media(max-width:480px){.valores{letter-spacing:2px;font-size:15px}.valores i{padding:0 4px}footer p{letter-spacing:1px}}
+.valores i{color:var(--amarillo);font-style:normal;padding:0 8px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <img src="img/lda-logo-96.png" alt="">
+    <div class="marca">Liga Deportiva de Albrook<small>ECLIPSE LEAGUE · 2026</small></div>
+    <ul>
+      <li><a href="#grupos">Grupos</a></li>
+      <li><a href="#calendario">Calendario</a></li>
+      <li><a href="#posiciones">Posiciones</a></li>
+      <li><a href="#formato">Formato</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="https://www.youtube.com/channel/UCXWc3cxVRZTAyJlqw0zsT3w" target="_blank" rel="noopener">YouTube</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo-hero" src="img/lda-logo.png" alt="Liga Deportiva de Albrook">
+    <div class="frases">
+      <div class="frase">Aquí se juega<br>en serio<em>Lunes y martes</em></div>
+      <div class="frase der">Más que una liga,<br>somos una<br>gran familia</div>
+    </div>
+    <h1 class="titulo">Eclipse<br>League</h1>
+    <div class="subtitulo">Liga nocturna de los <b>lunes</b> y <b>martes</b></div>
+    <div class="lema"><span class="num">12</span> equipos · <span class="num">2</span> grupos<span class="corona">1 solo campeón 👑</span></div>
+    <div class="capsulas">
+      <div class="capsula a"><div class="dia">Lunes</div><div class="fecha">21</div><div class="mes">de septiembre · Grupo A</div></div>
+      <div class="capsula b"><div class="dia">Martes</div><div class="fecha">22</div><div class="mes">de septiembre · Grupo B</div></div>
+    </div>
+    <div class="cuenta" id="cuenta" aria-live="polite"></div>
+    <div class="cuenta-nota" id="cuenta-nota">para el primer lanzamiento · 7:00 pm</div>
+  </div>
+</header>
+
+<main>
+  <section id="grupos">
+    <div class="wrap">
+      <div class="sec-titulo"><h2>Los grupos</h2><p>Cada equipo juega siempre en su noche durante la fase regular</p><div class="raya"></div></div>
+      <div class="grupos" id="lista-grupos"></div>
+    </div>
+  </section>
+
+  <section id="calendario" style="background:linear-gradient(180deg,var(--noche),var(--noche2) 30%,var(--noche))">
+    <div class="wrap">
+      <div class="sec-titulo"><h2>Calendario</h2><p>Complejo Deportivo del MEF, Albrook · 7:00, 8:20 y 9:40 pm</p><div class="raya"></div></div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="noches" id="noches"></div>
+      <p class="aviso"><strong>Semana del 2 al 5 de noviembre: no se juega · fiestas patrias.</strong><br>Si una jornada se cae por lluvia, el calendario corre una semana completa.</p>
+    </div>
+  </section>
+
+  <section id="posiciones">
+    <div class="wrap">
+      <div class="sec-titulo"><h2>Posiciones</h2><p>Se actualiza después de cada jornada</p><div class="raya"></div></div>
+      <div class="noches" id="tablas"></div>
+    </div>
+  </section>
+
+  <section id="formato" style="background:linear-gradient(180deg,var(--noche),var(--noche2) 40%,var(--noche))">
+    <div class="wrap">
+      <div class="sec-titulo"><h2>Así se juega</h2><p>Nadie queda fuera: los doce equipos juegan postemporada</p><div class="raya"></div></div>
+      <div class="formato">
+        <div class="tarjeta"><div class="big">9</div><h4>Juegos garantizados</h4><p>Ocho de fase regular, todos contra todos dentro del grupo, más uno de postemporada.</p></div>
+        <div class="tarjeta"><div class="big">3</div><h4>Juegos por noche</h4><p>A las 7:00, 8:20 y 9:40 pm. Picheo en modalidad <b style="color:#fff">bola puesta</b>.</p></div>
+        <div class="tarjeta"><div class="big">3.º</div><h4>Juego para cerrar roster</h4><p>Se pueden inscribir jugadores hasta el tercer juego. No se exige uniformidad.</p></div>
+      </div>
+      <div class="ruta">
+        <div class="paso"><span>16 y 17 nov</span><h5>Jornada 8</h5><p>Termina la fase regular.</p></div>
+        <div class="paso"><span>23 y 24 nov</span><h5>Noche de posiciones</h5><p>5.º vs 6.º y 3.º vs 4.º de cada grupo.</p></div>
+        <div class="paso"><span>Lunes 30 nov</span><h5>Noche de campeones</h5><p>1.º vs 2.º del Grupo A y del Grupo B.</p></div>
+        <div class="paso"><span>Martes 1 dic</span><h5>Gran final</h5><p>Campeón del Grupo A vs campeón del Grupo B.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-titulo"><h2>Todo está listo</h2><p>Lo que tiene cada juego</p><div class="raya"></div></div>
+      <div class="servicios">
+        <a class="serv" href="https://www.youtube.com/channel/UCXWc3cxVRZTAyJlqw0zsT3w" target="_blank" rel="noopener" style="text-decoration:none"><div class="ico"><svg width="34" height="24" viewBox="0 0 34 24" aria-hidden="true"><rect width="34" height="24" rx="6" fill="#e0101a"/><path d="M13 6l10 6-10 6z" fill="#fff"/></svg></div><h4>Transmisión en vivo</h4><p>Ver el canal en YouTube ›</p></a>
+        <div class="serv"><div class="ico"><svg width="26" height="34" viewBox="0 0 26 34" aria-hidden="true"><rect x="7" y="1" width="12" height="20" rx="6" fill="#eef2ff"/><path d="M3 15a10 10 0 0020 0M13 25v7M7 33h12" stroke="#eef2ff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div><h4>Narración</h4><p>La voz del softbol</p></div>
+        <div class="serv"><div class="ico"><svg width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><rect x="1" y="3" width="32" height="20" rx="3" fill="#0a1634" stroke="#f8f000" stroke-width="2"/><text x="17" y="18" font-family="Bebas,sans-serif" font-size="13" fill="#f8f000" text-anchor="middle">0 - 0</text></svg></div><h4>Anotación en vivo</h4><p>Estadísticas de cada jugador</p></div>
+        <div class="serv"><div class="ico"><svg width="36" height="26" viewBox="0 0 36 26" aria-hidden="true"><path d="M2 6h20v14H2zM22 10h7l5 5v5H22z" fill="#eef2ff"/><circle cx="9" cy="21" r="3.5" fill="#0a1634" stroke="#eef2ff" stroke-width="2"/><circle cx="28" cy="21" r="3.5" fill="#0a1634" stroke="#eef2ff" stroke-width="2"/><path d="M12 8v10M7 13h10" stroke="#e0101a" stroke-width="3"/></svg></div><h4>Ambulancia</h4><p>En el campo. Tu seguridad es primero</p></div>
+        <div class="serv"><div class="ico"><svg width="30" height="32" viewBox="0 0 30 32" aria-hidden="true"><path d="M7 2h16v8a8 8 0 01-16 0zM7 5H2c0 6 3 8 5 8M23 5h5c0 6-3 8-5 8M15 18v6M9 30h12l-2-6h-8z" fill="#d8a020" stroke="#d8a020" stroke-width="1.5"/></svg></div><h4>Premios</h4><p>En efectivo y trofeos</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="background:linear-gradient(180deg,var(--noche),var(--noche2))">
+    <div class="wrap dos">
+      <div class="tarjeta">
+        <h4>La sede</h4>
+        <p style="color:#fff;font-size:22px;font-weight:800;line-height:1.15">Complejo Deportivo del MEF</p>
+        <p>Albrook, al lado del Hospital Modular · Ciudad de Panamá</p>
+        <p style="margin-top:12px">Lunes y martes desde las 7:00 pm.</p>
+      </div>
+      <div class="tarjeta">
+        <h4>¿Tu equipo quiere jugar?</h4>
+        <p>Escríbenos por WhatsApp para la próxima temporada.</p>
+        <a class="wa" href="https://wa.me/50765231325" target="_blank" rel="noopener"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>6523-1325</a>
+        <a class="wa" href="https://wa.me/50764973574" target="_blank" rel="noopener"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>6497-3574</a>
+        <a class="wa" href="https://wa.me/50762327853" target="_blank" rel="noopener"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>6232-7853</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/lda-logo.png" alt="" style="width:92px;margin:0 auto 12px">
+    <div class="frase">Softbol, pasión que nos une</div>
+    <div class="valores">Disciplina<i>·</i>Respeto<i>·</i>Compañerismo</div>
+    <p><a href="https://www.youtube.com/channel/UCXWc3cxVRZTAyJlqw0zsT3w" target="_blank" rel="noopener" style="color:#fff">Míranos en vivo en YouTube</a></p>
+    <p>Liga Deportiva de Albrook · La mejor liga de los lunes y martes</p>
+  </div>
+</footer>
+
+<script>
+const EQ={
+  "The Deejays":{img:"deejays"},"Gran Combo":{img:"grancombo",largo:"El Gran Combo"},"Vikingos":{img:"vikingos"},
+  "Panamá Check":{img:"panamacheck"},"Muebles PTY":{img:"muebles"},"Thunder Squad":{img:"thunder"},
+  "La Unidad":{img:"launidad"},"Los Otros":{img:"losotros"},"Tiburones":{img:"tiburones",largo:"Tiburones de Panamá"},
+  "Pinoleros":{img:"pinoleros",largo:"Pinoleros 505"},"Goofys":{img:"goofys"},"Venezuela":{img:null,sigla:"VEN"}
+};
+const GRUPOS={
+  A:["The Deejays","Gran Combo","Vikingos","Panamá Check","Muebles PTY","Thunder Squad"],
+  B:["La Unidad","Los Otros","Tiburones","Pinoleros","Goofys","Venezuela"]
+};
+const HORAS=["7:00 pm","8:20 pm","9:40 pm"];
+const J=[
+ {n:1,a:"Lunes 21 sep",b:"Martes 22 sep",A:[["Panamá Check","The Deejays"],["Vikingos","Thunder Squad"],["Gran Combo","Muebles PTY"]],B:[["Pinoleros","Goofys"],["Tiburones","Los Otros"],["La Unidad","Venezuela"]]},
+ {n:2,a:"Lunes 28 sep",b:"Martes 29 sep",A:[["Panamá Check","Muebles PTY"],["Thunder Squad","The Deejays"],["Vikingos","Gran Combo"]],B:[["La Unidad","Los Otros"],["Pinoleros","Venezuela"],["Goofys","Tiburones"]]},
+ {n:3,a:"Lunes 5 oct",b:"Martes 6 oct",A:[["Thunder Squad","Muebles PTY"],["Panamá Check","Gran Combo"],["Vikingos","The Deejays"]],B:[["Goofys","La Unidad"],["Venezuela","Los Otros"],["Pinoleros","Tiburones"]]},
+ {n:4,a:"Lunes 12 oct",b:"Martes 13 oct",A:[["Thunder Squad","Gran Combo"],["The Deejays","Muebles PTY"],["Vikingos","Panamá Check"]],B:[["Los Otros","Pinoleros"],["La Unidad","Tiburones"],["Venezuela","Goofys"]]},
+ {n:5,a:"Lunes 19 oct",b:"Martes 20 oct",A:[["Gran Combo","The Deejays"],["Muebles PTY","Vikingos"],["Panamá Check","Thunder Squad"]],B:[["Tiburones","Venezuela"],["Goofys","Los Otros"],["Pinoleros","La Unidad"]]},
+ {n:6,a:"Lunes 26 oct",b:"Martes 27 oct",A:[["Thunder Squad","Vikingos"],["The Deejays","Panamá Check"],["Muebles PTY","Gran Combo"]],B:[["Venezuela","La Unidad"],["Goofys","Pinoleros"],["Los Otros","Tiburones"]]},
+ {n:7,a:"Lunes 9 nov",b:"Martes 10 nov",A:[["Muebles PTY","Panamá Check"],["Gran Combo","Vikingos"],["The Deejays","Thunder Squad"]],B:[["Tiburones","Goofys"],["Venezuela","Pinoleros"],["Los Otros","La Unidad"]]},
+ {n:8,a:"Lunes 16 nov",b:"Martes 17 nov",A:[["The Deejays","Vikingos"],["Gran Combo","Panamá Check"],["Muebles PTY","Thunder Squad"]],B:[["Tiburones","Pinoleros"],["La Unidad","Goofys"],["Los Otros","Venezuela"]]}
+];
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function escudo(n,cls){const e=EQ[n];return e.img?`<img src="img/${e.img}.jpg" alt="" loading="lazy"${cls?` class="${cls}"`:""}>`:`<span class="${cls||"mini"}">${e.sigla}</span>`}
+
+// grupos
+$("#lista-grupos").innerHTML=["A","B"].map(g=>`
+  <div class="grupo ${g.toLowerCase()}"><h3>★ Grupo ${g} ★<small>${g==="A"?"LOS LUNES":"LOS MARTES"}</small></h3>
+  ${GRUPOS[g].map((n,i)=>{const e=EQ[n];return `<div class="equipo"><div class="n">${i+1}</div>
+    <div class="escudo${e.img?"":" sin"}">${e.img?`<img src="img/${e.img}.jpg" alt="Logo de ${esc(e.largo||n)}" loading="lazy">`:e.sigla}</div>
+    <div class="nombre">${esc(e.largo||n)}</div></div>`}).join("")}
+  </div>`).join("");
+
+// calendario
+const tabs=$("#tabs"),noches=$("#noches");
+const etiquetas=[...J.map(j=>"J"+j.n),"Postemporada"];
+function juego(p,h){return `<div class="juego"><span class="hora">${h}</span><div class="cruce">
+  <div class="eq">${escudo(p[0])}<span>${esc(p[0])}</span></div><div class="vs">VS</div>
+  <div class="eq"><span>${esc(p[1])}</span>${escudo(p[1])}</div></div></div>`}
+function mostrar(i){
+  [...tabs.children].forEach((b,k)=>b.setAttribute("aria-selected",k===i));
+  if(i<J.length){const j=J[i];
+    noches.innerHTML=`<div class="noche a"><header>${j.a}<small>JORNADA ${j.n} · GRUPO A</small></header>${j.A.map((p,k)=>juego(p,HORAS[k])).join("")}</div>
+    <div class="noche b"><header>${j.b}<small>JORNADA ${j.n} · GRUPO B</small></header>${j.B.map((p,k)=>juego(p,HORAS[k])).join("")}</div>`;
+  }else{
+    noches.innerHTML=`<div class="noche a"><header>Grupo A<small>POSTEMPORADA</small></header>
+      <div class="post"><b>Lunes 23 nov · 8:00 pm</b><br>5.º vs 6.º de la tabla</div>
+      <div class="post"><b>Lunes 23 nov · 9:30 pm</b><br>3.º vs 4.º de la tabla</div>
+      <div class="post"><b>Lunes 30 nov · 8:00 pm</b><br>1.º vs 2.º del Grupo A</div></div>
+    <div class="noche b"><header>Grupo B<small>POSTEMPORADA</small></header>
+      <div class="post"><b>Martes 24 nov · 8:00 pm</b><br>5.º vs 6.º de la tabla</div>
+      <div class="post"><b>Martes 24 nov · 9:30 pm</b><br>3.º vs 4.º de la tabla</div>
+      <div class="post"><b>Lunes 30 nov · 9:30 pm</b><br>1.º vs 2.º del Grupo B <br><small style="color:var(--tenue)">La noche de campeones del Grupo B es lunes, no martes.</small></div></div>
+    <div class="noche a" style="grid-column:1/-1;border-color:var(--dorado)"><header style="background:linear-gradient(90deg,#8a6400,#2a1e00)">Gran final<small>MARTES 1 DE DICIEMBRE</small></header>
+      <div class="post" style="text-align:center;font-size:22px;font-weight:800">Campeón del Grupo A <span class="vs">VS</span> Campeón del Grupo B</div></div>`;
+  }
+}
+etiquetas.forEach((t,i)=>{const b=document.createElement("button");b.type="button";b.role="tab";b.textContent=t;b.onclick=()=>mostrar(i);tabs.appendChild(b)});
+// jornada vigente según la fecha de Panamá
+(function(){const hoy=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Panama"}));
+  const fin=[new Date(2026,8,22),new Date(2026,8,29),new Date(2026,9,6),new Date(2026,9,13),new Date(2026,9,20),new Date(2026,9,27),new Date(2026,10,10),new Date(2026,10,17)];
+  let i=fin.findIndex(f=>hoy<=new Date(f.getFullYear(),f.getMonth(),f.getDate(),23,59));if(i<0)i=J.length;mostrar(i)})();
+
+// posiciones (se editan aquí después de cada jornada: JG, JP, CA, CP)
+const TABLA={A:{},B:{}};
+$("#tablas").innerHTML=["A","B"].map(g=>`<div class="noche ${g.toLowerCase()}"><header>Grupo ${g}<small>${g==="A"?"LUNES":"MARTES"}</small></header>
+  <div style="padding:6px 12px 12px;overflow-x:auto"><table class="tabla"><thead><tr><th>#</th><th>Equipo</th><th>JJ</th><th>G</th><th>P</th><th>CA</th><th>CP</th><th>Dif</th></tr></thead><tbody>
+  ${GRUPOS[g].map((n,i)=>{const r=TABLA[g][n]||{g:0,p:0,ca:0,cp:0};const d=r.ca-r.cp;return `<tr><td>${i+1}</td><td>${esc(n)}</td><td>${r.g+r.p}</td><td>${r.g}</td><td>${r.p}</td><td>${r.ca}</td><td>${r.cp}</td><td>${d>0?"+"+d:d}</td></tr>`}).join("")}
+  </tbody></table></div></div>`).join("");
+
+// cuenta regresiva al lunes 21 de septiembre, 7:00 pm (Panamá, UTC-5)
+(function(){const meta=Date.parse("2026-09-21T19:00:00-05:00");const c=$("#cuenta"),nota=$("#cuenta-nota");
+  function tic(){let s=Math.floor((meta-Date.now())/1000);
+    if(s<=0){c.style.display="none";nota.textContent="¡La temporada está en juego!";return}
+    const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);
+    c.innerHTML=[[d,"días"],[h,"horas"],[m,"min"]].map(([v,t])=>`<div><b>${String(v).padStart(2,"0")}</b><span>${t}</span></div>`).join("");
+    setTimeout(tic,30000)}
+  tic()})();
+</script>
+</body>
+</html>

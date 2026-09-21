@@ -421,19 +421,19 @@ function tsuMostrar(i){
 TSU.F.forEach((F,i)=>{const [y,m,d]=F.f.split("-").map(Number);const b=document.createElement("button");b.type="button";b.role="tab";b.textContent=`${d} ${MESES[m-1]}`;b.onclick=()=>tsuMostrar(i);tsuTabs.appendChild(b)});
 (function(){let i=TSU.F.findIndex(F=>{const [y,m,d]=F.f.split("-").map(Number);return HOY<=new Date(y,m-1,d,23,59)});if(i<0)i=TSU.F.length-1;tsuMostrar(i);tsuTabs.children[i].scrollIntoView({block:"nearest",inline:"center"})})();
 /* ============ ECLIPSE ============ */
-const EQ={"The Deejays":{img:"deejays"},"Gran Combo":{img:"grancombo",largo:"El Gran Combo"},"Vikingos":{img:"vikingos"},"Panamá Check":{img:"panamacheck"},"Muebles PTY":{img:"muebles"},"Thunder Squad":{img:"thunder"},
-  "La Unidad":{img:"launidad"},"Gigantes":{img:"gigantes"},"Tiburones":{img:"tiburones",largo:"Tiburones de Panamá"},"Pinoleros":{img:"pinoleros",largo:"Pinoleros 505"},"Goofys":{img:"goofys"},"Venezuela":{img:null,sigla:"VEN"}};
-const GRUPOS={A:["The Deejays","Gran Combo","Vikingos","Panamá Check","Muebles PTY","Thunder Squad"],B:["La Unidad","Gigantes","Tiburones","Pinoleros","Goofys","Venezuela"]};
+const EQ={"The Deejays":{img:"deejays"},"Gran Combo":{img:"grancombo",largo:"El Gran Combo"},"Vikingos":{img:"vikingos"},"Panamá Check":{img:"panamacheck"},"Muebles PTY":{img:"muebles"},"Thunder Squat":{img:"thunder"},
+  "La Unidad":{img:"launidad"},"Gigantes":{img:"gigantes"},"Tiburones":{img:"tiburones",largo:"Tiburones de Panamá"},"Pinoleros":{img:"pinoleros",largo:"Pinoleros 505"},"Goofys":{img:"goofys"},"Los Panas Soff":{img:"panas"}};
+const GRUPOS={A:["The Deejays","Gran Combo","Vikingos","Panamá Check","Muebles PTY","Thunder Squat"],B:["La Unidad","Gigantes","Tiburones","Pinoleros","Goofys","Los Panas Soff"]};
 const HORAS=["7:00 pm","8:20 pm","9:40 pm"];
 const J=[
- {n:1,a:"Lunes 21 sep",b:"Martes 22 sep",A:[["Panamá Check","The Deejays"],["Vikingos","Thunder Squad"],["Gran Combo","Muebles PTY"]],B:[["Pinoleros","Goofys"],["Tiburones","Gigantes"],["La Unidad","Venezuela"]]},
- {n:2,a:"Lunes 28 sep",b:"Martes 29 sep",A:[["Panamá Check","Muebles PTY"],["Thunder Squad","The Deejays"],["Vikingos","Gran Combo"]],B:[["La Unidad","Gigantes"],["Pinoleros","Venezuela"],["Goofys","Tiburones"]]},
- {n:3,a:"Lunes 5 oct",b:"Martes 6 oct",A:[["Thunder Squad","Muebles PTY"],["Panamá Check","Gran Combo"],["Vikingos","The Deejays"]],B:[["Goofys","La Unidad"],["Venezuela","Gigantes"],["Pinoleros","Tiburones"]]},
- {n:4,a:"Lunes 12 oct",b:"Martes 13 oct",A:[["Thunder Squad","Gran Combo"],["The Deejays","Muebles PTY"],["Vikingos","Panamá Check"]],B:[["Gigantes","Pinoleros"],["La Unidad","Tiburones"],["Venezuela","Goofys"]]},
- {n:5,a:"Lunes 19 oct",b:"Martes 20 oct",A:[["Gran Combo","The Deejays"],["Muebles PTY","Vikingos"],["Panamá Check","Thunder Squad"]],B:[["Tiburones","Venezuela"],["Goofys","Gigantes"],["Pinoleros","La Unidad"]]},
- {n:6,a:"Lunes 26 oct",b:"Martes 27 oct",A:[["Thunder Squad","Vikingos"],["The Deejays","Panamá Check"],["Muebles PTY","Gran Combo"]],B:[["Venezuela","La Unidad"],["Goofys","Pinoleros"],["Gigantes","Tiburones"]]},
- {n:7,a:"Lunes 9 nov",b:"Martes 10 nov",A:[["Muebles PTY","Panamá Check"],["Gran Combo","Vikingos"],["The Deejays","Thunder Squad"]],B:[["Tiburones","Goofys"],["Venezuela","Pinoleros"],["Gigantes","La Unidad"]]},
- {n:8,a:"Lunes 16 nov",b:"Martes 17 nov",A:[["The Deejays","Vikingos"],["Gran Combo","Panamá Check"],["Muebles PTY","Thunder Squad"]],B:[["Tiburones","Pinoleros"],["La Unidad","Goofys"],["Gigantes","Venezuela"]]}
+ {n:1,a:"Lunes 21 sep",b:"Martes 22 sep",A:[["Panamá Check","The Deejays"],["Vikingos","Thunder Squat"],["Gran Combo","Muebles PTY"]],B:[["Pinoleros","Goofys"],["Tiburones","Gigantes"],["La Unidad","Los Panas Soff"]]},
+ {n:2,a:"Lunes 28 sep",b:"Martes 29 sep",A:[["Panamá Check","Muebles PTY"],["Thunder Squat","The Deejays"],["Vikingos","Gran Combo"]],B:[["La Unidad","Gigantes"],["Pinoleros","Los Panas Soff"],["Goofys","Tiburones"]]},
+ {n:3,a:"Lunes 5 oct",b:"Martes 6 oct",A:[["Thunder Squat","Muebles PTY"],["Panamá Check","Gran Combo"],["Vikingos","The Deejays"]],B:[["Goofys","La Unidad"],["Los Panas Soff","Gigantes"],["Pinoleros","Tiburones"]]},
+ {n:4,a:"Lunes 12 oct",b:"Martes 13 oct",A:[["Thunder Squat","Gran Combo"],["The Deejays","Muebles PTY"],["Vikingos","Panamá Check"]],B:[["Gigantes","Pinoleros"],["La Unidad","Tiburones"],["Los Panas Soff","Goofys"]]},
+ {n:5,a:"Lunes 19 oct",b:"Martes 20 oct",A:[["Gran Combo","The Deejays"],["Muebles PTY","Vikingos"],["Panamá Check","Thunder Squat"]],B:[["Tiburones","Los Panas Soff"],["Goofys","Gigantes"],["Pinoleros","La Unidad"]]},
+ {n:6,a:"Lunes 26 oct",b:"Martes 27 oct",A:[["Thunder Squat","Vikingos"],["The Deejays","Panamá Check"],["Muebles PTY","Gran Combo"]],B:[["Los Panas Soff","La Unidad"],["Goofys","Pinoleros"],["Gigantes","Tiburones"]]},
+ {n:7,a:"Lunes 9 nov",b:"Martes 10 nov",A:[["Muebles PTY","Panamá Check"],["Gran Combo","Vikingos"],["The Deejays","Thunder Squat"]],B:[["Tiburones","Goofys"],["Los Panas Soff","Pinoleros"],["Gigantes","La Unidad"]]},
+ {n:8,a:"Lunes 16 nov",b:"Martes 17 nov",A:[["The Deejays","Vikingos"],["Gran Combo","Panamá Check"],["Muebles PTY","Thunder Squat"]],B:[["Tiburones","Pinoleros"],["La Unidad","Goofys"],["Gigantes","Los Panas Soff"]]}
 ];
 function escudo(n){const e=EQ[n];return e.img?`<img src="img/${e.img}.jpg" alt="" loading="lazy">`:`<span class="mini">${e.sigla}</span>`}
 $("#ecl-grupos").innerHTML=["A","B"].map(g=>`<div class="grupo ${g.toLowerCase()}"><h4 class="it">★ Grupo ${g} ★<small>${g==="A"?"LOS LUNES":"LOS MARTES"}</small></h4>

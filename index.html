@@ -309,12 +309,12 @@ footer p{color:var(--tenue);font-size:14px;letter-spacing:3px;text-transform:upp
     </div>
 
     <div class="sec" id="eclipse-posiciones">
-      <div class="sec-titulo"><h3 class="it">Posiciones</h3><p>Tabla oficial sin recalcular · Grupo A después de la jornada 1 (lunes 21 de septiembre) · el Grupo B arranca el martes 22</p><div class="raya"></div></div>
+      <div class="sec-titulo"><h3 class="it">Posiciones</h3><p>Tabla oficial sin recalcular · después de la jornada 1: Grupo A el lunes 21 y Grupo B el martes 22 de septiembre</p><div class="raya"></div></div>
       <div class="noches" id="ecl-tablas"></div>
     </div>
 
     <div class="sec" id="eclipse-numeros">
-      <div class="sec-titulo"><h3 class="it">Los números</h3><p>Tabla, resultados y números de cada equipo · corte después de la jornada 1 del Grupo A (lunes 21 de septiembre)</p><div class="raya"></div></div>
+      <div class="sec-titulo"><h3 class="it">Los números</h3><p>Tabla, resultados y números de cada equipo · corte después de la jornada 1 (lunes 21 y martes 22 de septiembre)</p><div class="raya"></div></div>
       <p class="descarga-caja"><a class="descarga" href="eclipse-numeros.xlsx" download>Bajar los números (Excel)</a></p>
     </div>
 
@@ -445,7 +445,8 @@ $("#ecl-grupos").innerHTML=["A","B"].map(g=>`<div class="grupo ${g.toLowerCase()
   ${GRUPOS[g].map((n,i)=>{const e=EQ[n];return `<div class="equipo"><div class="num">${i+1}</div><div class="escudo${e.img?"":" sin"}">${e.img?`<img src="img/${e.img}.jpg" alt="Logo de ${esc(e.largo||n)}" loading="lazy">`:e.sigla}</div><div class="nombre it">${esc(e.largo||n)}</div></div>`}).join("")}</div>`).join("");
 const eclTabs=$("#ecl-tabs"),eclNoches=$("#ecl-noches");
 /* resultados Eclipse: "visitante|local":[carreras visitante, carreras local] */
-const ECL_RES={"Panamá Check|The Deejays":[15,12],"Vikingos|Thunder Squat":[12,5],"Gran Combo|Muebles PTY":[8,9]};
+const ECL_RES={"Panamá Check|The Deejays":[15,12],"Vikingos|Thunder Squat":[12,5],"Gran Combo|Muebles PTY":[8,9],
+ "Pinoleros|Los Goofis":[9,5],"Pacific Sharks|Gigantes":[7,6],"La Unidad|Los Panas Soff":[12,6]};
 function juego(p,h){const r=ECL_RES[p[0]+"|"+p[1]];return `<div class="juego"><span class="hora">${r?"Final":h}</span><div class="cruce"><div class="eq">${escudo(p[0])}<span>${esc(p[0])}</span></div><div class="vs">${r?r[0]+" – "+r[1]:"VS"}</div><div class="eq"><span>${esc(p[1])}</span>${escudo(p[1])}</div></div></div>`}
 function eclMostrar(i){
   [...eclTabs.children].forEach((b,k)=>b.setAttribute("aria-selected",k===i));
@@ -460,9 +461,11 @@ function eclMostrar(i){
 [...J.map(j=>"J"+j.n),"Postemporada"].forEach((t,i)=>{const b=document.createElement("button");b.type="button";b.role="tab";b.textContent=t;b.onclick=()=>eclMostrar(i);eclTabs.appendChild(b)});
 (function(){const fin=[[8,22],[8,29],[9,6],[9,13],[9,20],[9,27],[10,10],[10,17]].map(([m,d])=>new Date(2026,m,d,23,59));let i=fin.findIndex(f=>HOY<=f);if(i<0)i=J.length;eclMostrar(i)})();
 /* posiciones Eclipse (se editan aquí después de cada jornada: g, p, ca, cp) */
-const ECL_TABLA={"Vikingos":{g:1,p:0,ca:12,cp:5},"Panamá Check":{g:1,p:0,ca:15,cp:12},"Muebles PTY":{g:1,p:0,ca:9,cp:8},"Gran Combo":{g:0,p:1,ca:8,cp:9},"The Deejays":{g:0,p:1,ca:12,cp:15},"Thunder Squat":{g:0,p:1,ca:5,cp:12}};
+const ECL_TABLA={"Vikingos":{g:1,p:0,ca:12,cp:5},"Panamá Check":{g:1,p:0,ca:15,cp:12},"Muebles PTY":{g:1,p:0,ca:9,cp:8},"Gran Combo":{g:0,p:1,ca:8,cp:9},"The Deejays":{g:0,p:1,ca:12,cp:15},"Thunder Squat":{g:0,p:1,ca:5,cp:12},
+ "La Unidad":{g:1,p:0,ca:12,cp:6},"Pinoleros":{g:1,p:0,ca:9,cp:5},"Pacific Sharks":{g:1,p:0,ca:7,cp:6},"Gigantes":{g:0,p:1,ca:6,cp:7},"Los Goofis":{g:0,p:1,ca:5,cp:9},"Los Panas Soff":{g:0,p:1,ca:6,cp:12}};
 /* orden oficial de la tabla (tal como sale en la liga, sin recalcular); vacío = orden de los grupos */
-const ECL_ORDEN={A:["Vikingos","Panamá Check","Muebles PTY","Gran Combo","The Deejays","Thunder Squat"]};
+const ECL_ORDEN={A:["Vikingos","Panamá Check","Muebles PTY","Gran Combo","The Deejays","Thunder Squat"],
+ B:["La Unidad","Pinoleros","Pacific Sharks","Gigantes","Los Goofis","Los Panas Soff"]};
 $("#ecl-tablas").innerHTML=["A","B"].map(g=>`<div class="noche ${g.toLowerCase()}"><header>Grupo ${g}<small>${g==="A"?"LUNES":"MARTES"}</small></header><div style="padding:6px 12px 12px;overflow-x:auto">${tabla(ECL_ORDEN[g]||GRUPOS[g],ECL_TABLA)}</div></div>`).join("");
 (function(){const meta=Date.parse("2026-09-21T19:00:00-05:00");const c=$("#cuenta"),nota=$("#cuenta-nota"),est=$("#estado-eclipse");
   function tic(){let s=Math.floor((meta-Date.now())/1000);

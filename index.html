@@ -305,16 +305,16 @@ footer p{color:var(--tenue);font-size:14px;letter-spacing:3px;text-transform:upp
       <div class="sec-titulo"><h3 class="it">Calendario</h3><p>Complejo Deportivo del MEF, Albrook · 7:00, 8:20 y 9:40 pm</p><div class="raya"></div></div>
       <div class="tabs" role="tablist" id="ecl-tabs"></div>
       <div class="noches" id="ecl-noches"></div>
-      <p class="aviso"><strong>La jornada 4 se suspendió por lluvia el 12 y 13 de octubre y se juega el 19 y 20: todo el calendario corrió una semana. Semana del 2 al 5 de noviembre: no se juega · fiestas patrias.</strong><br>En el playoff, el de mejor posición es home club. Si una jornada se cae por lluvia, el calendario corre una semana completa.</p>
+      <p class="aviso"><strong>La jornada 4 se suspendió por lluvia el 12 y 13 de octubre y se jugó el 19 y 20: todo el calendario corrió una semana. Semana del 2 al 5 de noviembre: no se juega · fiestas patrias.</strong><br>En el playoff, el de mejor posición es home club. Si una jornada se cae por lluvia, el calendario corre una semana completa.</p>
     </div>
 
     <div class="sec" id="eclipse-posiciones">
-      <div class="sec-titulo"><h3 class="it">Posiciones</h3><p>Tabla oficial sin recalcular · después de la jornada 3: Grupo A el lunes 5 y Grupo B el martes 6 de octubre</p><div class="raya"></div></div>
+      <div class="sec-titulo"><h3 class="it">Posiciones</h3><p>Tabla oficial sin recalcular · Grupo A después de la jornada 4 (lunes 19 de octubre) · Grupo B después de la jornada 4 (martes 20 de octubre)</p><div class="raya"></div></div>
       <div class="noches" id="ecl-tablas"></div>
     </div>
 
     <div class="sec" id="eclipse-numeros">
-      <div class="sec-titulo"><h3 class="it">Los números</h3><p>Tabla, resultados y números de cada equipo · corte después de la jornada 3 (lunes 5 y martes 6 de octubre)</p><div class="raya"></div></div>
+      <div class="sec-titulo"><h3 class="it">Los números</h3><p>Tabla, resultados y números de cada equipo · Grupo A después de la jornada 4 (lunes 19 de octubre) · Grupo B después de la jornada 4 (martes 20 de octubre)</p><div class="raya"></div></div>
       <p class="descarga-caja"><a class="descarga" href="eclipse-numeros.xlsx" download>Bajar los números (Excel)</a></p>
     </div>
 
@@ -450,7 +450,9 @@ const ECL_RES={"Panamá Check|The Deejays":[15,12],"Vikingos|Thunder Squat":[12,
  "Panamá Check|Muebles PTY":[5,15],"Thunder Squat|The Deejays":[12,13],"Vikingos|Gran Combo":[5,6],
  "La Unidad|Gigantes":[6,9],"Pinoleros|Los Panas Soff":[2,14],"Los Goofis|Pacific Sharks":[7,9],
  "Thunder Squat|Muebles PTY":[6,18],"Panamá Check|Gran Combo":[7,14],"The Deejays|Vikingos":[7,12],
- "Los Goofis|La Unidad":[3,13],"Los Panas Soff|Gigantes":[4,5],"Pacific Sharks|Pinoleros":[3,13]};
+ "Los Goofis|La Unidad":[3,13],"Los Panas Soff|Gigantes":[4,5],"Pacific Sharks|Pinoleros":[3,13],
+ "Panamá Check|Vikingos":[2,14],"The Deejays|Muebles PTY":[7,6],"Gran Combo|Thunder Squat":[18,6],
+ "Gigantes|Pinoleros":[19,8],"La Unidad|Pacific Sharks":[4,9],"Los Panas Soff|Los Goofis":[9,5]};
 function juego(p,h){const r=ECL_RES[p[0]+"|"+p[1]];return `<div class="juego"><span class="hora">${r?"Final":h}</span><div class="cruce"><div class="eq">${escudo(p[0])}<span>${esc(p[0])}</span></div><div class="vs">${r?r[0]+" – "+r[1]:"VS"}</div><div class="eq"><span>${esc(p[1])}</span>${escudo(p[1])}</div></div></div>`}
 function eclMostrar(i){
   [...eclTabs.children].forEach((b,k)=>b.setAttribute("aria-selected",k===i));
@@ -465,11 +467,11 @@ function eclMostrar(i){
 [...J.map(j=>"J"+j.n),"Interliga","Playoff"].forEach((t,i)=>{const b=document.createElement("button");b.type="button";b.role="tab";b.textContent=t;b.onclick=()=>eclMostrar(i);eclTabs.appendChild(b)});
 (function(){const fin=[[8,22],[8,29],[9,6],[9,20],[9,27],[10,10]].map(([m,d])=>new Date(2026,m,d,23,59));let i=fin.findIndex(f=>HOY<=f);if(i<0)i=J.length+1;eclMostrar(i)})();
 /* posiciones Eclipse (se editan aquí después de cada jornada: g, p, ca, cp) */
-const ECL_TABLA={"Muebles PTY":{g:3,p:0,ca:42,cp:19},"Vikingos":{g:2,p:1,ca:29,cp:18},"Gran Combo":{g:2,p:1,ca:28,cp:21},"The Deejays":{g:1,p:2,ca:32,cp:39},"Panamá Check":{g:1,p:2,ca:27,cp:41},"Thunder Squat":{g:0,p:3,ca:23,cp:43},
- "La Unidad":{g:2,p:1,ca:31,cp:18},"Gigantes":{g:2,p:1,ca:20,cp:17},"Pinoleros":{g:2,p:1,ca:24,cp:22},"Pacific Sharks":{g:2,p:1,ca:19,cp:26},"Los Panas Soff":{g:1,p:2,ca:24,cp:19},"Los Goofis":{g:0,p:3,ca:15,cp:31}};
+const ECL_TABLA={"Vikingos":{g:3,p:1,ca:43,cp:20},"Muebles PTY":{g:3,p:1,ca:48,cp:26},"Gran Combo":{g:3,p:1,ca:46,cp:27},"The Deejays":{g:2,p:2,ca:39,cp:45},"Panamá Check":{g:1,p:3,ca:29,cp:55},"Thunder Squat":{g:0,p:4,ca:29,cp:61},
+ "Gigantes":{g:3,p:1,ca:39,cp:25},"Pacific Sharks":{g:3,p:1,ca:28,cp:30},"Los Panas Soff":{g:2,p:2,ca:33,cp:24},"La Unidad":{g:2,p:2,ca:35,cp:27},"Pinoleros":{g:2,p:2,ca:32,cp:41},"Los Goofis":{g:0,p:4,ca:20,cp:40}};
 /* orden oficial de la tabla (tal como sale en la liga, sin recalcular); vacío = orden de los grupos */
-const ECL_ORDEN={A:["Muebles PTY","Vikingos","Gran Combo","The Deejays","Panamá Check","Thunder Squat"],
- B:["La Unidad","Gigantes","Pinoleros","Pacific Sharks","Los Panas Soff","Los Goofis"]};
+const ECL_ORDEN={A:["Vikingos","Muebles PTY","Gran Combo","The Deejays","Panamá Check","Thunder Squat"],
+ B:["Gigantes","Pacific Sharks","Los Panas Soff","La Unidad","Pinoleros","Los Goofis"]};
 $("#ecl-tablas").innerHTML=["A","B"].map(g=>`<div class="noche ${g.toLowerCase()}"><header>Grupo ${g}<small>${g==="A"?"LUNES":"MARTES"}</small></header><div style="padding:6px 12px 12px;overflow-x:auto">${tabla(ECL_ORDEN[g]||GRUPOS[g],ECL_TABLA)}</div></div>`).join("");
 (function(){const meta=Date.parse("2026-09-21T19:00:00-05:00");const c=$("#cuenta"),nota=$("#cuenta-nota"),est=$("#estado-eclipse");
   function tic(){let s=Math.floor((meta-Date.now())/1000);

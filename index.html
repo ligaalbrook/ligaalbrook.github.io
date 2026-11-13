@@ -310,9 +310,9 @@ footer p{color:var(--tenue);font-size:14px;letter-spacing:3px;text-transform:upp
     </div>
 
     <div class="sec" id="eclipse-posiciones">
-      <div class="sec-titulo"><h3 class="it">Posiciones</h3><p>Final de la fase regular · Grupo A después de la jornada 5 (lunes 26 de octubre) · Grupo B después de la jornada 5 (martes 27 de octubre) · Interliga jugada el 9 y el 12 de noviembre</p><div class="raya"></div></div>
+      <div class="sec-titulo"><h3 class="it">Posiciones</h3><p>Tabla de cada grupo con los 6 juegos: las 5 jornadas de la fase regular y la interliga (lunes 9 y jueves 12 de noviembre). Con la interliga sumada, el orden quedó igual y los cruces del repechaje no cambian.</p><div class="raya"></div></div>
       <div class="noches" id="ecl-tablas"></div>
-      <p class="aviso"><strong>Orden según el Reglamento interno, capítulo 5.1:</strong> si dos equipos empatan, va primero el que ganó el juego entre ellos. Muebles PTY sobre Gran Combo (9-8) · Pacific Sharks sobre Gigantes (7-6) · Panamá Check sobre The Deejays (15-12) · Los Panas Soff sobre Pinoleros (14-2).</p>
+      <p class="aviso"><strong>Orden según el Reglamento interno, capítulo 5 (clasificación):</strong> si dos equipos empatan, va primero el que ganó el juego entre ellos; si empatan más de dos, va primero el que dominó a los otros en sus juegos directos. <b>Grupo A:</b> Muebles PTY sobre Gran Combo (9-8), los dos 5-1. Vikingos, Panamá Check y The Deejays quedan 3-3: Vikingos les ganó a los dos (14-2 y 12-7) y va 3.º; Panamá Check sobre The Deejays (15-12). <b>Grupo B:</b> Pacific Sharks, Gigantes y La Unidad quedan 4-2: Pacific Sharks les ganó a los dos (7-6 y 9-4) y va 1.º; Gigantes sobre La Unidad (9-6). Los Panas Soff sobre Pinoleros (14-2), los dos 2-4.</p>
     </div>
 
     <div class="sec" id="eclipse-numeros">
@@ -484,9 +484,9 @@ function eclMostrar(i){
 [...J.map(j=>"J"+j.n),"Interliga","Playoff"].forEach((t,i)=>{const b=document.createElement("button");b.type="button";b.role="tab";b.textContent=t;b.onclick=()=>eclMostrar(i);eclTabs.appendChild(b)});
 (function(){const fin=[[8,22],[8,29],[9,6],[9,20],[9,27],[10,12]].map(([m,d])=>new Date(2026,m,d,23,59));let i=fin.findIndex(f=>HOY<=f);if(i<0)i=J.length+1;eclMostrar(i)})();
 /* posiciones Eclipse (se editan aquí después de cada jornada: g, p, ca, cp) */
-const ECL_TABLA={"Muebles PTY":{g:4,p:1,ca:58,cp:27},"Gran Combo":{g:4,p:1,ca:56,cp:35},"Vikingos":{g:3,p:2,ca:44,cp:30},"Panamá Check":{g:2,p:3,ca:38,cp:62},"The Deejays":{g:2,p:3,ca:47,cp:55},"Thunder Squat":{g:0,p:5,ca:36,cp:70},
- "Pacific Sharks":{g:4,p:1,ca:36,cp:37},"Gigantes":{g:4,p:1,ca:54,cp:38},"La Unidad":{g:3,p:2,ca:45,cp:34},"Los Panas Soff":{g:2,p:3,ca:40,cp:32},"Pinoleros":{g:2,p:3,ca:39,cp:51},"Los Goofis":{g:0,p:5,ca:33,cp:55}};
-/* orden oficial: Reglamento interno LDA, cap. 5.1 (empate entre dos: enfrentamiento directo) */
+const ECL_TABLA={"Muebles PTY":{g:5,p:1,ca:73,cp:31},"Gran Combo":{g:5,p:1,ca:71,cp:35},"Vikingos":{g:3,p:3,ca:54,cp:42},"Panamá Check":{g:3,p:3,ca:45,cp:62},"The Deejays":{g:3,p:3,ca:61,cp:62},"Thunder Squat":{g:0,p:6,ca:48,cp:87},
+ "Pacific Sharks":{g:4,p:2,ca:40,cp:52},"Gigantes":{g:4,p:2,ca:54,cp:53},"La Unidad":{g:4,p:2,ca:57,cp:44},"Los Panas Soff":{g:2,p:4,ca:40,cp:39},"Pinoleros":{g:2,p:4,ca:46,cp:65},"Los Goofis":{g:1,p:5,ca:50,cp:67}};
+/* orden oficial: Reglamento interno LDA, cap. 5.1 (empate entre dos: enfrentamiento directo). Incluye la interliga (Ulises, 13 nov) */
 const ECL_ORDEN={A:["Muebles PTY","Gran Combo","Vikingos","Panamá Check","The Deejays","Thunder Squat"],
  B:["Pacific Sharks","Gigantes","La Unidad","Los Panas Soff","Pinoleros","Los Goofis"]};
 $("#ecl-tablas").innerHTML=["A","B"].map(g=>`<div class="noche ${g.toLowerCase()}"><header>Grupo ${g}<small>${g==="A"?"LUNES":"MARTES"}</small></header><div style="padding:6px 12px 12px;overflow-x:auto">${tabla(ECL_ORDEN[g]||GRUPOS[g],ECL_TABLA)}</div></div>`).join("");
